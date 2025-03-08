@@ -3,8 +3,7 @@ import cors from "cors";
 import _ from "lodash";
 const app = express();
 
-const port =  || 8000;
-app.use(cors());
+app.use(cors({ origin: ["process.env.CLIENT_URL", "http://localhost:5173/"] }));
 app.get("/", (req, res) => {
   res.send("backend is running ");
 });
@@ -18,8 +17,11 @@ app.get("/api/greet/", (req, res) => {
   res.json({ message: `Hello, ${name}! Welcome to Younglabs.` });
 });
 
-app.listen(port, () => {
-  console.log(`server is running on ${port}`);
-});
+if (process.env.NODE_ENV !== "production") {
+  const PORT = process.env.PORT || 8000;
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
 
 module.exports = app;
