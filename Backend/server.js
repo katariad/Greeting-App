@@ -3,7 +3,11 @@ import cors from "cors";
 import _ from "lodash";
 const app = express();
 
-app.use(cors({ origin: ["process.env.CLIENT_URL", "http://localhost:5173/"] }));
+app.use(
+  cors({
+    origin: [process.env.CLIENT_URL, "http://localhost:5173"],
+  })
+);
 app.get("/", (req, res) => {
   res.send("backend is running ");
 });
@@ -24,4 +28,4 @@ if (process.env.NODE_ENV !== "production") {
   });
 }
 
-module.exports = app;
+export default app;
