@@ -20,7 +20,7 @@ function App() {
     try {
       setIspending(true);
       const response = await fetch(
-        `http://localhost:8000/api/greet?name=${name}`
+        `https://greetingappbackend.vercel.app/api/greet?name=${name}`
       );
       const data = await response.json();
       setIspending(false);
