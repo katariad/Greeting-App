@@ -3,7 +3,7 @@ import cors from "cors";
 import _ from "lodash";
 const app = express();
 
-const port = 8000;
+const port =  || 8000;
 app.use(cors());
 app.get("/", (req, res) => {
   res.send("backend is running ");
@@ -21,3 +21,5 @@ app.get("/api/greet/", (req, res) => {
 app.listen(port, () => {
   console.log(`server is running on ${port}`);
 });
+
+module.exports = app;
